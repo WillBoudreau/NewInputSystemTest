@@ -35,6 +35,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Move"",
+                    ""type"": ""Button"",
+                    ""id"": ""00a67b53-7308-43b4-ba51-0088d658acbb"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -48,6 +57,50 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""46e66933-e86a-4ac1-91dd-a9db021c388d"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b4426232-2e22-4c08-b973-da603fcbefa6"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ebc882dc-6534-46d4-81c4-263d2f8b8025"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f6009ef7-2f79-4a75-8212-04f1e9094106"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -57,6 +110,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         // PlayerMovement
         m_PlayerMovement = asset.FindActionMap("PlayerMovement", throwIfNotFound: true);
         m_PlayerMovement_Jump = m_PlayerMovement.FindAction("Jump", throwIfNotFound: true);
+        m_PlayerMovement_Move = m_PlayerMovement.FindAction("Move", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -119,11 +173,13 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_PlayerMovement;
     private List<IPlayerMovementActions> m_PlayerMovementActionsCallbackInterfaces = new List<IPlayerMovementActions>();
     private readonly InputAction m_PlayerMovement_Jump;
+    private readonly InputAction m_PlayerMovement_Move;
     public struct PlayerMovementActions
     {
         private @PlayerInput m_Wrapper;
         public PlayerMovementActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @Jump => m_Wrapper.m_PlayerMovement_Jump;
+        public InputAction @Move => m_Wrapper.m_PlayerMovement_Move;
         public InputActionMap Get() { return m_Wrapper.m_PlayerMovement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -136,6 +192,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Jump.started += instance.OnJump;
             @Jump.performed += instance.OnJump;
             @Jump.canceled += instance.OnJump;
+            @Move.started += instance.OnMove;
+            @Move.performed += instance.OnMove;
+            @Move.canceled += instance.OnMove;
         }
 
         private void UnregisterCallbacks(IPlayerMovementActions instance)
@@ -143,6 +202,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Jump.started -= instance.OnJump;
             @Jump.performed -= instance.OnJump;
             @Jump.canceled -= instance.OnJump;
+            @Move.started -= instance.OnMove;
+            @Move.performed -= instance.OnMove;
+            @Move.canceled -= instance.OnMove;
         }
 
         public void RemoveCallbacks(IPlayerMovementActions instance)
@@ -163,5 +225,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     public interface IPlayerMovementActions
     {
         void OnJump(InputAction.CallbackContext context);
+        void OnMove(InputAction.CallbackContext context);
     }
 }
