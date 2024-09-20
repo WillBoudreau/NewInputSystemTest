@@ -5,6 +5,12 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement2 : MonoBehaviour
 {
+
+
+    //This script for C# events
+
+
+
     private TestProjectForInput playerInputActions;
     private InputAction movement;
 

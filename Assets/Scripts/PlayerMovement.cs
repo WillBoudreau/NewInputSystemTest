@@ -7,6 +7,12 @@ using UnityEngine.InputSystem.Controls;
 
 public class PlayerMovement : MonoBehaviour
 {
+    
+    
+    
+    //This Script for Unity Events
+
+
     public Rigidbody sphererigid;
     public InputAction playerInput;
     Vector3 movement;
