@@ -16,18 +16,19 @@ public class PlayerMovement2 : MonoBehaviour
 
     private Rigidbody rb;  
 
+
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        playerInputActions = new TestProjectForInput();   
+        playerInputActions = new TestProjectForInput(); 
     }
     void OnEnable()
     {
         movement = playerInputActions.Player.Move;
         movement.Enable();
+        playerInputActions.Player.Jump.Enable();
         movement.performed += MovementInput;
         playerInputActions.Player.Jump.performed += DoJump;
-        playerInputActions.Player.Jump.Enable();
     }
     void DoJump(InputAction.CallbackContext context)
     {
@@ -44,11 +45,12 @@ public class PlayerMovement2 : MonoBehaviour
     }
     void FixedUpdate()
     {
+        
     }
     void MovementInput(InputAction.CallbackContext context)
     {
         Debug.Log("Movement " + context.phase);
-        if(context.performed || context.started)
+        if(context.performed)
         {
             Debug.Log("Movement " + context.phase);
             Vector2 inputVector = context.ReadValue<Vector2>();
