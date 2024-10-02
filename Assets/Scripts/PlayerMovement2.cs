@@ -11,7 +11,7 @@ public class PlayerMovement2 : MonoBehaviour
 
 
 
-    private TestProjectForInput playerInputActions;
+    private TestProjectForInput2 playerInputActions;
     private InputAction movement;
 
     private Rigidbody rb;  
@@ -20,7 +20,7 @@ public class PlayerMovement2 : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        playerInputActions = new TestProjectForInput(); 
+        playerInputActions = new TestProjectForInput2(); 
     }
     void OnEnable()
     {

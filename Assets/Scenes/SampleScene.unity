@@ -238,77 +238,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 488543740}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2accb1835ee4be84fbab9a6c62d3d2a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   sphererigid: {fileID: 488543747}
-  playerInput:
-    m_Name: Player Input
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 73b20292-a21b-409e-a86a-1cd800f18251
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 3D Vector
-      m_Id: 17afdf7b-3243-49ac-b526-81084a5a1bf6
-      m_Path: 3DVector
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Player Input
-      m_Flags: 4
-    - m_Name: up
-      m_Id: 4645caad-44f7-46c5-b39a-a5d2c595d00f
-      m_Path: 
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Player Input
-      m_Flags: 8
-    - m_Name: down
-      m_Id: 2fed6c02-3236-4273-b9a3-22d3822159ca
-      m_Path: 
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Player Input
-      m_Flags: 8
-    - m_Name: left
-      m_Id: 14544137-ba0a-496a-adc6-3c3c102451d7
-      m_Path: <Keyboard>/a
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Player Input
-      m_Flags: 8
-    - m_Name: right
-      m_Id: c13b633e-a7fd-4fd6-9bf7-99be95a9fbca
-      m_Path: <Keyboard>/d
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Player Input
-      m_Flags: 8
-    - m_Name: forward
-      m_Id: 5ed0d8d6-20fe-4097-a21c-0a8c869eb1e4
-      m_Path: <Keyboard>/w
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Player Input
-      m_Flags: 8
-    - m_Name: backward
-      m_Id: ff3c6db5-5fdd-4289-97e4-5b019164d773
-      m_Path: <Keyboard>/s
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Player Input
-      m_Flags: 8
-    m_Flags: 0
 --- !u!54 &488543747
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -348,7 +283,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: a591a6531fd17734a910976338e3f8b3, type: 3}
+  m_Actions: {fileID: -944628639613478452, guid: 68f596447d646914a84fbafdda245f49, type: 3}
   m_NotificationBehavior: 3
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
@@ -393,9 +328,9 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 00a67b53-7308-43b4-ba51-0088d658acbb
     m_ActionName: PlayerMovement/Move[/Keyboard/w,/Keyboard/a,/Keyboard/s,/Keyboard/d]
-  m_NeverAutoSwitchControlSchemes: 1
+  m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: PlayerMovement
+  m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!114 &488543749
@@ -405,7 +340,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 488543740}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bca0998f99844504594b87312787d863, type: 3}
   m_Name: 
