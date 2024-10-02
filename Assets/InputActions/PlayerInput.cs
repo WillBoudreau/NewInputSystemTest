@@ -32,7 +32,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""type"": ""Button"",
                     ""id"": ""4908cecb-5565-4e60-9273-b010ee723220"",
                     ""expectedControlType"": ""Button"",
-                    ""processors"": """",
+                    ""processors"": ""AxisDeadzone"",
                     ""interactions"": """",
                     ""initialStateCheck"": false
                 },

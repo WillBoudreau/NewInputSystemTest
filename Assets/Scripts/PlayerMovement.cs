@@ -1,9 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Controls;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -14,41 +12,37 @@ public class PlayerMovement : MonoBehaviour
 
 
     public Rigidbody sphererigid;
-    public InputAction playerInput;
-    Vector3 movement;
+    public PlayerInputActions playerInputActions;
+    Vector2 movement;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         sphererigid = GetComponent<Rigidbody>();
-    }
-    void update()
-    {
-        movement = playerInput.ReadValue<Vector3>();
+
+        playerInputActions = new PlayerInputActions();
+
+        playerInputActions.Player.Jump.performed += Jump;
+        playerInputActions.Player.Move.performed += Move;
     }
     void FixedUpdate()
     {
-        sphererigid.velocity = new Vector3(movement.x, sphererigid.velocity.y, movement.z);
+        Vector3 movementVector = new Vector3(movement.x,sphererigid.velocity.y,movement.y);
+        sphererigid.velocity = movementVector;
     }
-    // private void OnEnable()
-    // {
-    //     playerInput.Enable();
-    //     playerInput.performed += Move;
-    //     playerInput.canceled += Move;
-    // }
+    private void OnEnable()
+    {
+        playerInputActions.Player.Enable();
+    }
 
-    // private void OnDisable()
-    // {
-    //     playerInput.Disable();
-    //     playerInput.performed -= Move;
-    //     playerInput.canceled -= Move;
-    // }
+    private void OnDisable()
+    {
+        playerInputActions.Player.Disable();
+    }
     public void Move(InputAction.CallbackContext context)
     {
-        if(context.performed)
-        {
-            Debug.Log("Move" + context.phase);
-            sphererigid.AddForce(Vector3.forward * 5f, ForceMode.Impulse);
-        }
+        movement = context.ReadValue<Vector2>();
+        Debug.Log("Movement" + context.phase);
+
     }
 
     public void Jump(InputAction.CallbackContext context)
